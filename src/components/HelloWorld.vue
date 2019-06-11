@@ -5,10 +5,20 @@
      <div>
      {{number + 1}}
      </div>
+     <p v-if="seen">
+       v-if 判断语句
+     </p>
+     <p v-else>
+       哈哈哈哈
+     </p>
+     <p v-n="2">
+       
+     </p>
   </div>
 </template>
  
 <script>
+import './n'
 export default {
   name: 'HelloWorld',
   props: { //props 是传参的入口
@@ -18,7 +28,8 @@ export default {
     return{
         msg1:' <a href="tel:+86 18776007488">HelloWorld</a>',
         id:'txt',
-        number:1
+        number:1,
+        seen:true
     }
   }
 }
