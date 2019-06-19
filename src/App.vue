@@ -2,16 +2,19 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="hellow world"/>
+    <ev/>
   </div>
 </template> 
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ev from './components/events.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    ev
   }
 }
 </script>
