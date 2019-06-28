@@ -13,7 +13,10 @@
     </noscript>
     <div id="app">
       <!-- 路由匹配到的组件将渲染在这里 -->
-      <router-view></router-view>
+     <router-view></router-view>   <!-- 路由是在这里变更的 而不是在#app上变更 -->
+     <router-link to="/">pagea</router-link>
+     <router-link to="/pageb">pageb</router-link>
+    
     </div>
     <!-- built files will be auto injected -->
   </body>

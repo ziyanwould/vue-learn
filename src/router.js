@@ -11,7 +11,7 @@ const routes = [
 
 
 const router =new VueRouter({
-    routes
+    routes //桥梁关系 路由实例化 链接到APP实例化中
 })
 
 export default router;

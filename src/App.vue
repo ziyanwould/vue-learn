@@ -8,6 +8,10 @@
        <h1 slot="a" class="class">加首部</h1>
        <h1 slot="b" class="class">加首部</h1>
      </com>
+
+      <!-- <Vuexx/> -->
+      <pagea/>
+      <pageb/>
   </div>
 </template> 
 
@@ -15,13 +19,19 @@
 import HelloWorld from './components/HelloWorld.vue'
 import ev from './components/events.vue'
 import com from './components/com.vue'
+// import Vuexx from './components/vuex.vue'
+import pagea from './components/a.vue'
+import pageb from './components/b.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
     ev,
-    com
+    com,
+    // Vuexx,
+    pagea,
+    pageb
   },
   data:function(){
     return{
