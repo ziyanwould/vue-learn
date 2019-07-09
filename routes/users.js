@@ -30,4 +30,37 @@ router.post('/addPerson',async function(ctx){
   
 })
 
+router.post('/getPerson',async function(ctx){
+  const result =  await Person.findOne({name: ctx.request.body.name}) //只查找一个对象 不再继续
+  const results = await Person.find({name: ctx.request.body.name})   //所有匹配到的都查找 以数组方式列出来
+
+  ctx.body = {
+    code:0,
+    result,
+    results
+  }
+})
+
+router.post('/updatePerson', async function(ctx){
+  const result = await Person.where({
+    name: ctx.request.body.name
+  }).update({
+    age: ctx.request.body.age
+  })
+  ctx.body={
+    code:0
+  }
+})
+
+router.post('/removePerson', async function(ctx){
+  const result = await Person.where({
+    name: ctx.request.body.name
+  }).remove()
+  ctx.body={
+    code:0
+  }
+})
+
+
+
 module.exports = router
