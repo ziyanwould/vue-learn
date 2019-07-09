@@ -1,6 +1,8 @@
 const router = require('koa-router')()
+const Redis = require('koa-redis')
 const Person = require('../dbs/models/person')
 
+const Store = new Redis().client
 router.prefix('/users')
 
 router.get('/', function (ctx, next) {
@@ -52,7 +54,7 @@ router.post('/updatePerson', async function(ctx){
   }
 })
 
-router.post('/removePerson', async function(ctx){
+router.post('/removePerson', async function(ctx){//真实情况下 禁止对数据库进行删除操作 严令禁止
   const result = await Person.where({
     name: ctx.request.body.name
   }).remove()
@@ -61,6 +63,13 @@ router.post('/removePerson', async function(ctx){
   }
 })
 
+
+router.get('/fix',async function(ctx,next){
+  const  st = await Store.hset('fix','name',Math.random())
+  ctx.body={
+    code:0
+  }
+})
 
 
 module.exports = router

@@ -5,7 +5,9 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-// const pv = require('./middleware/koa-pv.js')
+const session = require('koa-generic-session')
+const Redis = require('koa-redis')
+ const pv = require('./middleware/koa-pv.js')
 // const m1 = require('./middleware/m1')
 // const m2 = require('./middleware/m2')
 // const m3 = require('./middleware/m3')
@@ -18,13 +20,18 @@ const users = require('./routes/users')
 
 // error handler
 onerror(app)
-
+app.keys=['keys','keyskeys']
+app.use(session({
+  key:'mt',
+  prefix:'mtpr',
+  store:new Redis()
+}))
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
 //koa 中间件是环形的处理机制 交给别人后 ，别人执行完后把 还会回来
-// app.use(pv())
+ app.use(pv())
 // app.use(m1())
 // app.use(m2())
 // app.use(m3())
