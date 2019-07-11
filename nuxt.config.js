@@ -1,42 +1,53 @@
+
 module.exports = {
+  mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: 'nuxt-learn',
+    title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
-  ** Global CSS
-  */
-  css: ['~assets/css/main.css'],
-  /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#fff' },
   /*
-   ** Build configuration
-   */
+  ** Global CSS
+  */
+  css: [
+    'element-ui/lib/theme-chalk/reset.css',
+    'element-ui/lib/theme-chalk/index.css',
+    '~assets/css/main.css'
+  ],
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    '@/plugins/element-ui'
+  ],
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+  ],
+  /*
+  ** Build configuration
+  */
   build: {
+    transpile: [/^element-ui/],
     /*
-     ** Run ESLINT on save
-     */
-    // extend (config, ctx) {
-    //   if (ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // }
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    },
+    cache:true
   }
 }
